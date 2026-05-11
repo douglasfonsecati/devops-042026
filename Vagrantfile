@@ -13,13 +13,16 @@ config.vm.define "controle" do |controle|
 	controle.vm.provision "ansible_local" do |al|
   al.playbook = "installdocker.yml" 
   al.install_mode = "apt"
-end
-
+  end
+controle.vm.provision "ansible_local" do |al|
+      al.playbook = "installjenkins.yml"
+      al.install_mode = "apt"
+  end
     controle.vm.provider "virtualbox" do |vb|
       vb.name = "controle"
-      vb.memory = "2048"
+      vb.memory = "4000"
       vb.cpus = 2
-    end
+   end
   end
 
 
