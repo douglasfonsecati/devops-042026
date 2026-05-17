@@ -42,9 +42,9 @@ pipeline {
                 slackSend channel: '#ci-devops', message: "Rodando Trivy Scan...", tokenCredentialId: 'slack-token'
 
                 sh """
-                    trivy image ${IMAGE_WEB}   --severity HIGH,CRITICAL --exit-code 0 --format json --output trivy-web.json
-                    trivy image ${IMAGE_DB}    --severity HIGH,CRITICAL --exit-code 0 --format json --output trivy-db.json
-                    trivy image ${IMAGE_NGINX} --severity HIGH,CRITICAL --exit-code 0 --format json --output trivy-nginx.json
+                    /usr/local/bin/trivy image ${IMAGE_WEB}   --severity HIGH,CRITICAL --exit-code 0 --format json --output trivy-web.json
+                    /usr/local/bin/trivy image ${IMAGE_DB}    --severity HIGH,CRITICAL --exit-code 0 --format json --output trivy-db.json
+                    /usr/local/bin/trivy image ${IMAGE_NGINX} --severity HIGH,CRITICAL --exit-code 0 --format json --output trivy-nginx.json
                 """
             }
             post {
